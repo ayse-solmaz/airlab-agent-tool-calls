@@ -1,0 +1,16 @@
+# Gizli anahtarlar: .env asla git'e girmemeli
+.env
+
+# Sanal ortam: herkes kendi bilgisayarında uv ile yeniden kurar,
+# yüzlerce MB tutar, repoya konmaz
+.venv/
+
+# Python'un çalışırken ürettiği önbellek dosyaları
+__pycache__/
+*.pyc
+
+# Editör ve işletim sistemi dosyaları
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
