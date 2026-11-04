@@ -41,7 +41,7 @@ Filtre verilmezse tablonun tamamı döner. Sıralama ve limit yok.
 
 ## 5. Calculator: `ast` ile güvenli hesaplama
 **Karar:** İfade `eval()` ile değil, `ast` ile ağaca çevrilip hesaplanır. Sadece sayılara ve `+ - * / ( )` işlemlerine izin verilir.
-**Neden:** `eval()` metni Python kodu olarak çalıştırır. Calculator'a giden metni model ürettiği için, yanlış ya da kötü niyetli bir ifade bilgisayarda kod çalıştırabilir. `ast` ile sadece izin verilen işlemler hesaplanır, gerisi reddedilir. Hazır kütüphane yerine kendim yazdım, çünkü her satırını açıklayabilmek istiyorum.
+**Neden:** `eval()` metni Python kodu olarak çalıştırır. Calculator'a giden metni model ürettiği için, yanlış ya da kötü niyetli bir ifade bilgisayarda kod çalıştırabilir. `ast` ile sadece izin verilen işlemler hesaplanır, gerisi reddedilir. Hazır kütüphane yerine kısa bir `ast` değerlendirici tercih edildi, çünkü her satırı açıklanabilir ve ek paket gerektirmez. `**` bilerek yok: `2 ** 99999999` gibi bir ifade programı kilitleyebilir.
 
 ## 6. Normalizasyon
 **Karar:** Bir değeri karşılaştırılabilir hâle getiren **tek** bir kural var:
@@ -50,7 +50,7 @@ Filtre verilmezse tablonun tamamı döner. Sıralama ve limit yok.
 3. aradaki fazla boşlukları teke indir
 4. Türkçe'ye uygun küçük harfe çevir (`"İ"` → `"i"`, `"I"` → `"ı"`)
 
-Sözlüklerde anahtarlar sıralanır. Kural iç içe sözlüklere de uygulanır (`filtre` argümanının içi de normalize edilir).
+Sözlüklerde anahtarlar sıralanır. Kural iç içe sözlüklere de uygulanır (`filtre` argümanının içi de normalize edilir). Boş değerler (`None`, `{}`) atılır: `{"tablo": "subeler"}` ile `{"tablo": "subeler", "filtre": {}}` aynı sonucu verdiği için aynı çağrı sayılır.
 
 **Nerede kullanılıyor:**
 - **Tekrar tespiti ve cache:** aynı tool + aynı normalize argümanlar = aynı çağrı.

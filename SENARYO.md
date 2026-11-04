@@ -75,7 +75,7 @@ Sabit bir metin listesi. Arama her zaman aynı sorguya aynı sonucu döndürür.
 
 ## 3. `calculator`: aritmetik
 
-Sadece sayılar ve `+ - * / ( )` (istersen `**`). `ast` ile kendin yazacaksın.
+Sadece sayılar ve `+ - * / ( )`. `ast` ile güvenli şekilde hesaplanır.
 
 ---
 

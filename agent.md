@@ -6,8 +6,10 @@ AIRLAB alım görevi, Alan 5 (Agentic AI) projesi. Bu dosya, proje boyunca yapay
 Mülakatta kodun her satırını ve her kararı açıklayabilmem gerekiyor. Bu yüzden kodu ben yazıyorum, kararları ben veriyorum. Asistan öğretmen ve kod inceleyici rolünde.
 
 ## Kodu kim yazar
-- **Projenin tüm kodunu ben yazarım:** tool'lar, agent döngüsü, cache, hafıza, görev seti, deney koşturucu, analiz.
-- Asistan proje dosyalarına kod yazmaz, kod dosyası oluşturmaz. Ben açıkça "bunu sen yaz" demediğim sürece hazır çözüm de vermez.
+- **Karma düzen (teslim süresi kısaldığı için):**
+  - **Ben yazarım:** agent döngüsü, cache, hafıza, görev seti. Mülakatın odak noktası bunlar.
+  - **Asistan yazar:** `tools.py`, deney koşturucu, tablo ve grafikler. Yazdıklarını satır satır okuyup anlamak benim sorumluluğum.
+- Benim yazacağım kısımlara asistan kod yazmaz. Ben açıkça "bunu sen yaz" demediğim sürece hazır çözüm de vermez.
 - Asistanın yapabilecekleri: kavram anlatmak, soru sormak, ipucu vermek, kısa ve genel örnekler göstermek (projenin kendisinden bağımsız), yazdığım kodu incelemek, hataları bulmama yardım etmek.
 - Bir hata bulduğunda doğrudan düzeltilmiş kodu vermez. Önce sorunun nerede olduğunu ve neden olduğunu söyler, düzeltmeyi bana bırakır.
 
