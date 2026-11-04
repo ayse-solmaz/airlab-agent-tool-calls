@@ -73,8 +73,11 @@ Sözlüklerde anahtarlar sıralanır. Kural iç içe sözlüklere de uygulanır 
 
 **Sınırlama:** Anlamca aynı ama farklı yazılmış çağrılar yakalanmadığı için ölçülen tekrar sayısı bir **alt sınırdır**.
 
-## 7. Henüz kararlaştırılmadı
-- Agent döngüsünün yapısı, hafıza penceresi boyutu
-- Cache ve kısa dönem hafızanın ayrıntıları
+## 7. Model: `openai/gpt-oss-120b` (Groq)
+**Karar:** Deneyler Groq üzerinde `openai/gpt-oss-120b` ile koşulur.
+**Neden:** Hesapta açık olan tool calling adayları (`gpt-oss-120b`, `gpt-oss-20b`, `qwen3.8-27b`) aynı görevle denendi, üçü de doğru cevabı verdi. `gpt-oss-120b` hesabı `calculator` ile yaptı ve filtreyi dar tuttu; `gpt-oss-20b` `calculator`'ı atladı, `qwen3.8-27b` tüm tabloyu çekti.
+**Sınırlama:** Bu seçim her model için tek koşuya dayanıyor, kesin bir karşılaştırma değil. `llama-3.3-70b-versatile` hesapta bulunmadığı için denenemedi.
+
+## 8. Henüz kararlaştırılmadı
+- Hafıza penceresi boyutu ve sıcaklık ayarı (kodda şimdilik varsayılan: 2 turn, 0.6)
 - 10 görev ve başarı kontrolü
-- Model ve sıcaklık ayarı

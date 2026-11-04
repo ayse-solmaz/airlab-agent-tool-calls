@@ -7,8 +7,8 @@ Mülakatta kodun her satırını ve her kararı açıklayabilmem gerekiyor. Bu y
 
 ## Kodu kim yazar
 - **Karma düzen (teslim süresi kısaldığı için):**
-  - **Ben yazarım:** agent döngüsü, cache, hafıza, görev seti. Mülakatın odak noktası bunlar.
-  - **Asistan yazar:** `tools.py`, deney koşturucu, tablo ve grafikler. Yazdıklarını satır satır okuyup anlamak benim sorumluluğum.
+  - **Ben yazarım:** görev seti.
+  - **Asistan yazar:** `tools.py`, agent döngüsü, cache, hafıza, deney koşturucu, tablo ve grafikler. Yazdıklarını satır satır okuyup anlamak benim sorumluluğum. Mülakatın odak noktası agent döngüsü, cache ve hafıza.
 - Benim yazacağım kısımlara asistan kod yazmaz. Ben açıkça "bunu sen yaz" demediğim sürece hazır çözüm de vermez.
 - Asistanın yapabilecekleri: kavram anlatmak, soru sormak, ipucu vermek, kısa ve genel örnekler göstermek (projenin kendisinden bağımsız), yazdığım kodu incelemek, hataları bulmama yardım etmek.
 - Bir hata bulduğunda doğrudan düzeltilmiş kodu vermez. Önce sorunun nerede olduğunu ve neden olduğunu söyler, düzeltmeyi bana bırakır.
