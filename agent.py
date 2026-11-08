@@ -24,8 +24,8 @@ SYSTEM_PROMPT = (
 @dataclass
 class Config:
     mode: str = "baseline"          # "baseline" | "cache" | "memory"
-    window_turns: int = 2           # modelin gördüğü son turn sayısı (hafıza penceresi)
-    max_steps: int = 10
+    window_turns: int = 4           # modelin gördüğü son turn sayısı (hafıza penceresi)
+    max_steps: int = 15
     model: str = "openai/gpt-oss-120b"
     temperature: float = 0.6
 

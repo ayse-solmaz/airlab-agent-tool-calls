@@ -73,7 +73,8 @@ class TestWebSearch(unittest.TestCase):
         cases = {"dolar kuru": "42,00", "USD kaç TL": "42,00", "euro kuru": "48,50",
                  "Pusula Dağıtım zammı": "%8", "Mavi Yayın indirimi": "%5",
                  "Lale Basım teslim süresi": "12 iş", "Okyanus Kodla Düşün fiyatı": "399",
-                 "Okyanus Kitap Sessiz Liman": "255", "kargo ücreti": "45 TL"}
+                 "Okyanus Kitap Sessiz Liman": "255", "kargo ücreti": "45 TL",
+                 "Kadıköy Beşiktaş paket gönderim fiyatı": "45 TL"}
         for query, expected in cases.items():
             self.assertIn(expected, web_search(query).split("\n")[0], query)
 

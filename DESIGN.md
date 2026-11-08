@@ -78,6 +78,27 @@ Sözlüklerde anahtarlar sıralanır. Kural iç içe sözlüklere de uygulanır 
 **Neden:** Hesapta açık olan tool calling adayları (`gpt-oss-120b`, `gpt-oss-20b`, `qwen3.8-27b`) aynı görevle denendi, üçü de doğru cevabı verdi. `gpt-oss-120b` hesabı `calculator` ile yaptı ve filtreyi dar tuttu; `gpt-oss-20b` `calculator`'ı atladı, `qwen3.8-27b` tüm tabloyu çekti.
 **Sınırlama:** Bu seçim her model için tek koşuya dayanıyor, kesin bir karşılaştırma değil. `llama-3.3-70b-versatile` hesapta bulunmadığı için denenemedi.
 
-## 8. Henüz kararlaştırılmadı
-- Hafıza penceresi boyutu ve sıcaklık ayarı (kodda şimdilik varsayılan: 2 turn, 0.6)
-- 10 görev ve başarı kontrolü
+## 8. Hafıza penceresi: 4 turn, adım sınırı: 15
+**Karar:** Agent son 4 turn'ü görür ve en fazla 15 adım atar. Sıcaklık 0.6.
+**Neden:** Değerler görev 8 ve 9 üzerinde yapılan pilotlarla seçildi (`results/pilot.jsonl`, `results/pilot_w4.jsonl`). Pencere 2 ile 6 koşunun hepsi 10 adım sınırına takıldı: hesap için üç bilgi aynı anda gerekiyor ama model son ikisini görüyor, bu yüzden aynı çağrıları döngü hâlinde yineledi. Bu, görevi imkânsız kılan bir baseline olurdu. Pencere 4 ile 6 koşunun 2'si başarılı oldu, görev 8 ise en az 7-8 çağrı gerektirdiği için 10 adıma sığmadı.
+**Sınırlama:** Pencere ve adım sınırı sonuçlara bakılarak seçildi, yani bağımsız bir ayar değildir.
+
+## 9. Başarı kontrolü
+**Karar:** Görevin beklediği bütün sayılar son cevapta geçiyorsa görev başarılıdır (`evaluate.py`). Türkçe ve İngilizce sayı biçimleri kabul edilir, yuvarlama payı var. Cevabı olmayan görevde agent bilginin bulunmadığını söylemeli ve uydurma sayı yazmamalıdır.
+**Neden:** Otomatik kontrol, bütün koşuları aynı kuralla puanlar.
+**Sınırlama:** Kontrol sayıların doğru bağlamda olup olmadığına bakmaz.
+
+## 10. Ana sonuç dosyası: `results/results_v2.jsonl`
+**Karar:** Deney son kodla baştan koşuldu. Raporun ana sonucu bu koşudur. Bu seçim yeni sonuçlar görülmeden, koşu başlarken yapıldı.
+**Neden:** İlk koşuda (`results/results.jsonl`) düzeltmeler deney ortasında yapılmıştı: görev 7 için arama kelimeleri eklendi, puanlama düzeltildi, bağlantı kopmalarına tekrar deneme eklendi. Ayrıca birkaç koşunun süresi agent dışı bir duraklamayla şişti (en uzunu 4 adımda 56.445 sn). Yeni koşuda bütün satırlar aynı kodla üretilir ve başarısız denemenin süresi agent'ın süresine yazılmaz.
+**Sınırlama:** Model aynı seed'le birebir aynı cevabı vermediği için iki koşunun sayıları farklı olabilir. İlk koşu silinmedi, karşılaştırma olarak raporda kalır.
+
+## 11. Yeni koşuda 2 seed
+**Karar:** Yeni koşu 3 yerine 2 seed ile (0 ve 1, toplam 60 koşu) durduruldu.
+**Neden:** Groq'un günlük 200.000 token limiti koşuyu yavaşlattı ve 90 koşunun ne zaman biteceği belirsizleşti. Görev her konfigürasyon için 2-3 tekrar istiyor, 2 seed bunu karşılıyor. Koşular seed sırasıyla ilerlediği için her modda eşit sayıda koşu var. Karar 49. koşuda, seed 1'in görev 8 ve 9 sonuçları gelmeden verildi.
+**Sınırlama:** Seed 0 sonuçları karar verilirken görülmüştü. Ayrıca iki değerden hesaplanan std zayıf bir ölçüdür.
+
+## 12. Ana sonuç dosyası: `results/results_v3.jsonl`
+**Karar:** İkinci koşu 52 / 60'ta durduktan sonra kaldığı yerden devam edilmedi, aynı 60 koşu baştan başlatıldı. Raporun ana sonucu bu üçüncü koşudur. Bu seçim üçüncü koşunun sonuçları görülmeden yapıldı. Bölüm 10 ve 11'deki `results_v2.jsonl` kararının yerine geçer, 2 seed kararı aynen geçerlidir.
+**Neden:** İkinci koşu önce bilgisayarın bekleme moduyla uzun süre durdu, sonra Wi-Fi yaklaşık 3 dakikadan uzun kopunca tamamen durdu. Yeni koşudan önce iki düzeltme yapıldı: bağlantı kopunca yaklaşık 1 saat denemeye devam eder, bekleme sırasında geçen gerçek süre ölçümden çıkarılır.
+**Sınırlama:** İkinci koşunun 52 satırı karar verilirken görülmüştü. Bu yüzden `results_v2.jsonl` silinmedi, raporda karşılaştırma olarak kalır.

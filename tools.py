@@ -122,7 +122,7 @@ KNOWLEDGE_BASE = [
     ('Rakip zincir Okyanus Kitap, "Sessiz Liman" kitabını 255 TL\'ye satıyor.',
      {"okyanus", "rakip", "sessiz", "liman"}),
     ("Anlaşmalı kargo firması Hızlı Kargo'nun şubeler arası transfer ücreti paket başına 45 TL'dir.",
-     {"kargo", "transfer", "hızlı"}),
+     {"kargo", "transfer", "hızlı", "paket", "gönderim"}),
 ]
 
 
