@@ -33,5 +33,5 @@ Mülakatta kodun her satırını ve her kararı açıklayabilmem gerekiyor. Bu y
 - **Gereksiz çağrı:** aynı görevde, aynı tool'a, normalize edilmiş aynı argümanlarla yapılan ikinci ve sonraki çağrılar (Türkçe küçük harf, boşluk temizliği, anahtar sıralama). Not: Python'da `"İ".lower()` düz "i" vermez.
 - **Müdahaleler:** cache ve kısa dönem hafıza.
 - **Tekrar tetikleyici:** hafıza penceresi (agent sadece son N turn'ü görür) ve aynı bilgiyi iki kez gerektiren görevler.
-- **Metrikler:** başarı oranı, istenen çağrı, çalıştırılan çağrı, tekrar çağrı, adım sayısı, token, süre. Her konfigürasyon en az 3 kez koşulur, ortalama ± std raporlanır.
+- **Metrikler:** başarı oranı, istenen çağrı, çalıştırılan çağrı, tekrar çağrı, adım sayısı, token, süre. Her konfigürasyon 2 seed ile koşuldu (plan 3 seed idi, Groq'un günlük token limiti yüzünden 2'ye indi), ortalama ± std raporlanır.
 - Mülakat notu: cache *çalıştırılan* çağrıyı azaltır ama *istenen* çağrıyı azaltmaz.

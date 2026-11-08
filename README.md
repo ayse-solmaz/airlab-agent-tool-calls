@@ -123,7 +123,7 @@ API hatası veren koşu başarısız sayılır. Bu koşuların çağrı sayılar
 
 Deney üç kez başlatıldı. Rapordaki ana sonuç `results/results_v3.jsonl` dosyasıdır ve bu seçim yeni sonuçlar görülmeden yapıldı.
 
-Plan 3 seed idi. Groq'un günlük 200.000 token limiti yüzünden bitiş saati belirsizleşince ikinci koşuda hedef 2 seed'e (60 koşu) indirildi. Görev 2-3 tekrar istediği için 2 seed yeterlidir.
+Plan 3 seed idi. Groq'un günlük 200.000 token limiti yüzünden bitiş saati belirsizleşince ikinci koşuda hedef 2 seed'e (60 koşu) indirildi. Alım görevi her konfigürasyonun 2-3 kez koşulmasını istediği için 2 seed yeterlidir.
 
 İkinci koşu ([results/results_v2.jsonl](results/results_v2.jsonl)) 52 / 60'ta Wi-Fi kopunca durdu, araya bilgisayarın bekleme modu da girmişti. Kaldığı yerden devam etmek yerine aynı 60 koşu baştan başlatıldı. Bu koşunun sonuçları karar verilirken görülmüştü, bu yüzden silinmedi ve karşılaştırma için repoda duruyor.
 
